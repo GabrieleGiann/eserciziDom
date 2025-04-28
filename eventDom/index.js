@@ -4,17 +4,21 @@ let isDarkMode = false;
 btn.addEventListener("click", switchColorProfile);
 
 function switchColorProfile() {
-  isDarkMode ? changeToLight() : changeToDark();
+  isDarkMode
+    ? change("themeDark", "themeWhite", false)
+    : change("themeWhite", "themeDark", true);
 }
 
-function changeToDark() {
-  body.classList.add("themeDark");
-  body.classList.remove("themeWhite");
-  isDarkMode = true;
+function change(addcls, removecls, darkmode) {
+  body.classList.add(addcls);
+  body.classList.remove(removecls);
+  isDarkMode = darkmode;
 }
 
+/*
 function changeToLight() {
   body.classList.add("themeWhite");
   body.classList.remove("themeDark");
   isDarkMode = false;
 }
+*/

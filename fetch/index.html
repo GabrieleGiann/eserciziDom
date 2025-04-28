@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const img = document.createElement("img");
+      const name = document.createElement("h2");
+      let pg;
+
+      fetch("https://ringsdb.com/api/public/card/02025")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          pg = data;
+
+          // Completo i dati
+          img.src = "https://ringsdb.com" + pg.imagesrc; // importante aggiungere dominio
+          img.alt = pg.name;
+          name.textContent = pg.name;
+
+          // Appendo al body
+          document.body.appendChild(img);
+          document.body.appendChild(name);
+        });
+    </script>
+  </body>
+</html>
